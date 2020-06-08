@@ -8,5 +8,5 @@ exposePluginConfig('item_tags', 'plugins/item_tags/config');
 
 import ConfigView from './views/ConfigView';
 router.route('plugins/item_tags/config', 'itemTagsConfig', function () {
-    events.trigger('g:navigateTo', ConfigView);
+    events.trigger('g:navigateTo', ConfigView, {}, { renderNow: true });
 });
