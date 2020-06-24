@@ -98,11 +98,11 @@ const ItemTagWidget = View.extend({
                 return tag.startsWith(input.val());
             }).slice(0, 10);
             if (this.highlightIndex < -1) {
-            // user must have wrapped around, change the highlight to the end of the array
+                // user must have wrapped around, change the highlight to the end of the array
                 this.highlightIndex = autocompleteOptions.length - 1;
             }
             if (this.highlightIndex >= autocompleteOptions.length) {
-            // user must have gone off the end of the list, change highlight back to -1 (no option selected)
+                // user must have gone off the end of the list, change highlight back to -1 (no option selected)
                 this.highlightIndex = -1;
             }
             this.$el.find('.g-widget-item-tags-autocomplete-menu .dropdown-menu').html(ItemTagAutocompleteMenuTemplate({
@@ -178,7 +178,7 @@ const ItemTagsWidget = View.extend({
     /** Passed to ItemTagWidget and called when a tag being edited is deleted */
     itemDeleted: function (index, tag) {
         this.tags.splice(index, 1);
-        this.saveTags();
+        this.saveTags(this.tags);
     },
     /** Validates that the current list of tags is a subset of allowedTags */
     validateTags: function () {
