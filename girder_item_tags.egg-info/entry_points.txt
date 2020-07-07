@@ -1,3 +1,0 @@
-[girder.plugin]
-item_tags = girder_item_tags:GirderPlugin
-
