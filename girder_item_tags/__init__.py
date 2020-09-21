@@ -44,7 +44,7 @@ def _validate_item_tag_list(tags):
 
 def search_handler(query, types, user=None, level=None, limit=0, offset=0):
     # Break the query into a list of keywords separated by whitespace
-    query = re.compile(r'\W+').split(query.strip())
+    query = re.compile(r'\s+').split(query.strip())
     # Find all items that are tagged with every string in the query
     cursor = Item()\
         .find({'meta.girder_item_tags': {'$all': query}})\
