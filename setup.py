@@ -29,7 +29,7 @@ setup(
     name='girder-item-tags',
     packages=find_packages(exclude=['test', 'test.*']),
     url='https://github.com/girder/girder',
-    version='0.2.0',
+    version='0.3.0',
     zip_safe=False,
     entry_points={
         'girder.plugin': [

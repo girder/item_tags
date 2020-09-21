@@ -93,3 +93,23 @@ def test_search_multiple_search_tags(server, user, userFolder):
     print(results)
     assert len(results) == 1
     assert results[0]['_id'] == str(item2['_id'])
+
+
+@pytest.mark.plugin('item_tags')
+def test_search_special_characters(server, user, userFolder):
+    item = createItem('testItem', user, userFolder, ['colon:', 'semicolon;', 'tilde~', 'dash-'])
+    resp = server.request(
+        path='/resource/search',
+        method='GET',
+        user=user,
+        params={
+            'q': 'colon: semicolon; tilde~ dash-',
+            'mode': 'item_tags',
+            'types': '["item"]'
+        }
+    )
+    assertStatusOk(resp)
+    results = resp.json['item']
+    print(results)
+    assert len(results) == 1
+    assert results[0]['_id'] == str(item['_id'])
